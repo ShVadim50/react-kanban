@@ -32,12 +32,29 @@ const KanbanBoard = () => {
     }
   };
 
+  //  Очистить все задачи и localStorage
+  const clearBoard = () => {
+    const emptyTasks = {
+      backlog: [],
+      ready: [],
+      inProgress: [],
+      done: []
+    };
+    setTasks(emptyTasks);
+    localStorage.setItem("kanbanTasks", JSON.stringify(emptyTasks));
+  };
+
   return (
     <div className="kanban">
       <header className="kanban__header">
         <h1>Awesome Kanban Board</h1>
         <UserMenu />
       </header>
+
+      {/* Кнопка Очистки */}
+      <div style={{ textAlign: "right", margin: "10px 20px" }}>
+        <button onClick={clearBoard} className="clear-button">Очистить доску</button>
+      </div>
 
       <main className="kanban__columns">
         <Column title="Backlog" tasks={tasks.backlog} column="backlog" addTask={addTask} />

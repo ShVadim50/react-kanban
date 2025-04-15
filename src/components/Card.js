@@ -1,8 +1,7 @@
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Card = ({ id, text, column }) => {
+const Card = ({ id, text, column, avatar }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -11,7 +10,10 @@ const Card = ({ id, text, column }) => {
 
   return (
     <div className="card" onClick={handleClick}>
-      <p>{text}</p>
+      <div className="card-header">
+        <img src={avatar} alt="Avatar" className="avatar" />
+        <p>{text}</p>
+      </div>
     </div>
   );
 };
