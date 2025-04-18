@@ -11,7 +11,7 @@ const Card = ({ id, text, column, avatar }) => {
   return (
     <div className="card" onClick={handleClick}>
       <div className="card-header">
-        <img src={avatar} alt="Avatar" className="avatar" />
+  
         <p>{text}</p>
       </div>
     </div>

@@ -1,23 +1,28 @@
 
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const TaskPage = () => {
-  const { column, index } = useParams();
-  const navigate = useNavigate();
+  const { taskId } = useParams();
+  const [task, setTask] = useState(null);
 
-  const tasks = JSON.parse(localStorage.getItem("kanbanTasks")) || {};
-  const taskText = tasks[column]?.[index];
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem("kanbanTasks"));
+    if (savedTasks) {
+      const allTasks = Object.values(savedTasks).flat();
+      const found = allTasks.find((t) => t.id === taskId);
+      setTask(found);
+    }
+  }, [taskId]);
+
+  if (!task) {
+    return <div>Task not found</div>;
+  }
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <button onClick={() => navigate("/")}>← Back</button>
-      <h2>Task Detail</h2>
-      {taskText ? (
-        <p>{taskText}</p>
-      ) : (
-        <p>Task not found.</p>
-      )}
+    <div className="task-page">
+      <h1>{task.title}</h1>
+      <p>{task.description || "This task has no description"}</p>
     </div>
   );
 };

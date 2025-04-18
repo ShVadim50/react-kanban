@@ -21,19 +21,22 @@ function App() {
 
   return (
     <div className="App">
-      {/* Всегда отображаем доску */}
-      <KanbanBoard tasks={tasks} setTasks={setTasks} />
-
-      {/* Отдельно рендерим модалку, если URL содержит /task/... */}
-      {location.pathname.startsWith('/task/') && (
-        <div className="modal-overlay" onClick={() => navigate('/')}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <Routes>
-              <Route path="/task/:column/:id" element={<TaskDetails tasks={tasks} />} />
-            </Routes>
-          </div>
-        </div>
-      )}
+      <Routes location={location}>
+        <Route path="/" element={<KanbanBoard tasks={tasks} setTasks={setTasks} />} />
+        <Route
+          path="/task/:column/:id"
+          element={
+            <>
+              <KanbanBoard tasks={tasks} setTasks={setTasks} />
+              <div className="modal-overlay" onClick={() => navigate('/')}>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                  <TaskDetails tasks={tasks} />
+                </div>
+              </div>
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 }

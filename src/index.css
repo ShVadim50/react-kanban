@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: rgb(81, 81, 231);
+  background-color: rgb(0,121,191,1);
 }
 
 .kanban__columns {
@@ -23,8 +23,8 @@ body {
 }
 
 .card {
-  background: #f0ebeb;
-  border: 1px solid #dfd9d9;
+  background: #d5d3d3;
+  border: 1px solid #e4dfdf;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 4px;
@@ -32,15 +32,16 @@ body {
   transition: background-color 0.2s;
   position: relative;
   z-index: 1;
+
 }
 
 .card:hover {
-  background-color: #a89a9a;
+  background-color: #f0ecec;
 }
 
 .kanban__header {
   padding: 1rem;
-  background: #884de6;
+  background:rgba(0,103,163,1);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,7 +49,20 @@ body {
   height: 10px;
 }
 
+.kanban {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; 
+}
 
+
+
+
+.column {
+  background-color: #dae1e8;
+  border-radius: 6px;
+  padding: 10px;
+}
 
 
 .dropdown {
@@ -67,7 +81,7 @@ body {
 .dropdown li {
   padding: 8px 12px;
   cursor: pointer;
-  color: #884de6;
+  color: #19043a;
 }
 
 .dropdown li:hover {
@@ -114,36 +128,24 @@ body {
   margin-bottom: 10px;
 }
 
-.kanban__footer  {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 16px;
-  text-align: center;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  padding: 1em;
-  background: #7028e5;
+.kanban__footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: auto;
-color: #f0ebeb;
-cursor: pointer;
-height: 10px;
-
+  padding: 10px 20px;
+  background-color: #0067a3;
+  color: white;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  
+    position:b;
+    margin-top: auto; 
+    
+  
 }
 
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 12px; 
-}
 
 .clear-button {
-  background-color: #ff4d4f;
+  background-color: #ea6f71;
   color: white;
   padding: 8px 14px;
   border: none;
@@ -178,3 +180,35 @@ height: 10px;
   width: 90%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
+button, select {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+
+button {
+  background-color: #d3ded3;
+  color: rgb(152, 148, 148);
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #bcc5bc;
+}
+
+select {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
